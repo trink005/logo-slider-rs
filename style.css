@@ -1,0 +1,33 @@
+/* Outer wrapper: background height controls available space */
+.logo-slider {
+    background: transparent;   /* or rgba(0,0,0,0) */
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Track scrolls horizontally */
+.logo-slider__track {
+    display: flex;
+    align-items: center;     /* ensures logos align vertically */
+    gap: 70px;
+    width: max-content;
+    animation: scroll 120s linear infinite;
+}
+
+/* Logo images */
+.logo-slider__slide img {
+    height: 30px;            /* scale logos down */
+    width: auto;             /* prevent distortion */
+    object-fit: contain;
+    display: block;
+}
+
+/* Animation */
+@keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
