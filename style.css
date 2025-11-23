@@ -1,46 +1,32 @@
-/* Outer wrapper */
+/* Outer wrapper: background height controls available space */
 .logo-slider {
-    background: transparent; 
+    background: transparent;   /* or rgba(0,0,0,0) */
+    height: 50px;
     width: 100%;
-    /* No fixed height here. We let the content dictate it */
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 2vw 0; /* Adds dynamic breathing room top/bottom */
 }
 
 /* Track scrolls horizontally */
 .logo-slider__track {
     display: flex;
-    align-items: center;
-    gap: 5vw; /* GAP IS NOW FLUID: 5% of screen width */
+    align-items: center;     /* ensures logos align vertically */
+    gap: 70px;
     width: max-content;
-    animation: scroll 40s linear infinite; /* Speeded up slightly for smoothness */
+    animation: scroll 120s linear infinite;
 }
 
-/* THE FIX:
-   Instead of sizing the image directly, we size the CONTAINER (slide).
-   This forces every logo to occupy the exact same amount of screen space.
-*/
-.logo-slider__slide {
-    width: 12vw;  /* Each logo takes 12% of the viewport width */
-    height: 8vw;  /* Fixed aspect ratio box */
-    
-    /* Center the logo inside this box */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Make the image fill the fluid box, but maintain aspect ratio */
+/* Logo images */
 .logo-slider__slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* KEY: Prevents stretching/distortion */
+    height: 30px;            /* scale logos down */
+    width: auto;             /* prevent distortion */
+    object-fit: contain;
+    display: block;
 }
 
-/* Animation stays the same */
+/* Animation */
 @keyframes scroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
